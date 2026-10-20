@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Artem Sydorenko — CV</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<style>
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --ink: #111a33; --ink2: #3c4566; --ink3: #6b7392; --gold: #a8851a; --line: #e2e5ee; --side: #0f1730; }
+html, body { background: #fff; color: var(--ink); font: 400 9.6pt/1.45 Manrope, Arial, sans-serif;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 210mm; height: 297mm; display: grid; grid-template-columns: 64mm 1fr; overflow: hidden; }
+a { color: inherit; text-decoration: none; }
+
+/* Sidebar */
+aside { background: var(--side); color: #e9ecf6; padding: 13mm 8mm 10mm 9mm; }
+aside h1 { font-family: Unbounded, sans-serif; font-size: 19pt; line-height: 1.08; letter-spacing: -.01em; margin-bottom: 2.5mm; }
+aside .role { color: #e2bd45; font-weight: 700; font-size: 10.5pt; margin-bottom: 5mm; }
+aside h2 { font-size: 8pt; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: #e2bd45; margin: 5.6mm 0 2.6mm; }
+aside .item { margin-bottom: 2.1mm; font-size: 8.8pt; color: #c9cfe6; word-break: break-word; }
+aside .item b { display: block; color: #fff; font-weight: 700; font-size: 9pt; }
+aside .label { display: block; font-size: 7.4pt; color: #8590b8; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; }
+aside .skill { margin-bottom: 2.3mm; }
+aside .skill b { display: block; color: #fff; font-size: 8.8pt; margin-bottom: .6mm; }
+aside .skill span { color: #c9cfe6; font-size: 8.6pt; }
+
+/* Main */
+main { padding: 14mm 13mm 10mm 11mm; }
+.summary { font-size: 9.8pt; color: var(--ink2); margin-bottom: 6mm; line-height: 1.5; }
+.summary b { color: var(--ink); }
+main h2 { font-size: 8.4pt; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--gold);
+  border-bottom: 1.2px solid var(--line); padding-bottom: 1.6mm; margin: 0 0 3.4mm; }
+section + section { margin-top: 5.6mm; }
+.entry + .entry { margin-top: 4.2mm; }
+.head { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+.head h3 { font-size: 11pt; font-weight: 800; color: var(--ink); }
+.head .when { font-size: 8.6pt; color: var(--ink3); white-space: nowrap; font-weight: 600; }
+.sub { font-size: 9pt; color: var(--ink2); font-weight: 600; margin: .4mm 0 1.6mm; }
+.stack { font-size: 8.6pt; color: var(--gold); font-weight: 700; margin-bottom: 1.8mm; }
+ul { padding-left: 4.2mm; }
+li { margin-bottom: 1.15mm; color: var(--ink2); padding-left: .6mm; }
+li::marker { color: var(--gold); }
+li b { color: var(--ink); font-weight: 700; }
+.link { font-size: 8.6pt; color: var(--ink3); margin-top: 1.4mm; }
+.link b { color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="page">
+  <aside>
+    <h1>Artem<br>Sydorenko</h1>
+    <div class="role">Full Stack Developer</div>
+
+    <h2>Contact</h2>
+    <div class="item"><span class="label">Phone</span><a href="tel:+48536037622">+48 536 037 622</a></div>
+    <div class="item"><span class="label">Email</span><a href="mailto:sidorenkoartem555@gmail.com">sidorenkoartem555@gmail.com</a></div>
+    <div class="item"><span class="label">Location</span>Gdańsk, Poland</div>
+    <div class="item"><span class="label">Portfolio</span><a href="https://photography2610.github.io">photography2610.github.io</a></div>
+    <div class="item"><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/artem-sydorenko-1b6aa12a7">linkedin.com/in/artem-sydorenko-1b6aa12a7</a></div>
+    <div class="item"><span class="label">GitHub</span><a href="https://github.com/photography2610">github.com/photography2610</a></div>
+
+    <h2>Skills</h2>
+    <div class="skill"><b>Frontend</b><span>React, TypeScript, JavaScript, HTML5, CSS3, Sass, CSS Modules, Vite, responsive &amp; touch UI, i18n</span></div>
+    <div class="skill"><b>Backend</b><span>C#, ASP.NET Core Web API, Entity Framework Core, REST, JWT authentication, role-based access</span></div>
+    <div class="skill"><b>Databases</b><span>PostgreSQL, MySQL, schema design, migrations, transactions</span></div>
+    <div class="skill"><b>Tools &amp; practices</b><span>Git, automated API testing, PowerShell, Windows installers, code review, AI-assisted development (Claude Code)</span></div>
+
+    <h2>Languages</h2>
+    <div class="item"><b>Polish</b>C1 · Advanced</div>
+    <div class="item"><b>English</b>B2 · Upper-intermediate</div>
+    <div class="item"><b>Ukrainian</b>C2 · Native</div>
+    <div class="item"><b>Russian</b>C2 · Native</div>
+    <div class="item"><b>German</b>A1 · Beginner</div>
+  </aside>
+
+  <main>
+    <p class="summary">Full stack developer building production-ready web applications with <b>React, TypeScript and ASP.NET Core</b>. Designed and built <b>HookahPOS</b>, a complete point-of-sale system for hospitality venues, covering everything from the PostgreSQL schema to the touch-screen UI and Windows installer. I use AI coding assistants (Claude Code) every day, while owning the architecture, business logic and code quality myself.</p>
+
+    <section>
+      <h2>Projects</h2>
+      <div class="entry">
+        <div class="head"><h3>HookahPOS — point-of-sale system for hookah lounges</h3><span class="when">2026</span></div>
+        <div class="sub">Personal commercial project · sole developer</div>
+        <div class="stack">React 19 · TypeScript · ASP.NET Core 10 · EF Core · PostgreSQL 17 · JWT</div>
+        <ul>
+          <li>Built a full POS covering <b>floor plan, orders, payments, inventory, staff and analytics</b> (~12k lines of code, 15 REST API controllers).</li>
+          <li>Designed <b>transactional stock accounting</b> with a movement log, and <b>immutable order snapshots</b> so menu changes never alter past bills.</li>
+          <li>Implemented bill splitting, discounts and voids on part of a quantity, with <b>all totals calculated on the server</b>.</li>
+          <li>Implemented <b>PIN login with JWT</b>, role checks on the server and instant session revocation through token versioning.</li>
+          <li>Handled business-day reporting (06:00 cutoff, UTC storage, daylight-saving edge cases).</li>
+          <li>Wrote <b>286 automated API test scenarios</b> that run against an isolated test database.</li>
+          <li>Shipped as a <b>self-contained Windows installer</b>, with the UI in Polish, English and Russian, optimized for 1920×1080 touch terminals and phones.</li>
+        </ul>
+        <div class="link">Video demo &amp; case study: <b>photography2610.github.io</b> · source code available on request</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Experience</h2>
+      <div class="entry">
+        <div class="head"><h3>Frontend Junior</h3><span class="when">05/2024 – 07/2024</span></div>
+        <div class="sub">EPAM · Gdańsk</div>
+        <ul>
+          <li>Designed and built a website end to end, from the visual design and layouts to front-end markup integrated with the back end.</li>
+          <li>Created responsive layouts for phone, tablet and desktop, and kept them consistent across browsers.</li>
+          <li>Worked in an agile team toward sprint goals, and suggested workflow improvements that reduced rework.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <div class="head"><h3>Practice Placement Worker</h3><span class="when">09/2024 – 11/2024</span></div>
+        <div class="sub">Amber Expo · Gdańsk</div>
+        <ul>
+          <li>Coordinated student placements: orientation sessions, regular meetings with supervisors, support for students facing difficulties.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <div class="entry">
+        <div class="head"><h3>WSB University, Gdańsk</h3><span class="when">10/2025 – present</span></div>
+        <div class="sub">Bachelor's degree, Management</div>
+      </div>
+      <div class="entry">
+        <div class="head"><h3>ZSE Technical College, Gdańsk</h3><span class="when">03/2022 – 06/2025</span></div>
+        <div class="sub">IT Technician</div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

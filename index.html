@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Artem Sydorenko — Full Stack Developer</title>
+<meta name="description" content="Full stack developer (React, TypeScript, ASP.NET Core, PostgreSQL) in Gdańsk. Case study: HookahPOS, a point-of-sale system for hookah lounges.">
+<meta property="og:title" content="Artem Sydorenko — Full Stack Developer">
+<meta property="og:description" content="Case study: HookahPOS — a complete point-of-sale system built with React, TypeScript, ASP.NET Core and PostgreSQL.">
+<meta property="og:image" content="assets/img/poster.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts.css">
+<style>
+:root {
+  --bg: #0a1122; --bg2: #0f1730; --panel: #141d3b; --panel2: #1a2346; --line: rgba(255,255,255,.10); --line2: rgba(255,255,255,.16);
+  --text: #eef1f8; --text2: #b9c0dc; --text3: #8590b8; --gold: #c9a227; --gold2: #e2bd45; --teal: #3fb68b; --blue: #5b7cf0;
+  --radius: 18px; --max: 1180px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { background: var(--bg); color: var(--text); font: 400 17px/1.6 Manrope, system-ui, sans-serif; overflow-x: hidden; }
+img, video { display: block; max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3 { font-family: Unbounded, Manrope, sans-serif; font-weight: 700; line-height: 1.1; letter-spacing: -.01em; }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+.kicker { color: var(--gold); font-weight: 800; font-size: 13px; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 14px; }
+.muted { color: var(--text2); }
+.mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .86em; }
+
+/* Header */
+header.top { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(12px); background: rgba(10,17,34,.78); border-bottom: 1px solid var(--line); }
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+.brand { font-family: Unbounded; font-size: 15px; text-decoration: none; letter-spacing: .02em; white-space: nowrap; }
+.brand span { color: var(--gold); }
+header nav { display: flex; gap: 26px; align-items: center; }
+header nav a { text-decoration: none; color: var(--text2); font-weight: 600; font-size: 15px; }
+header nav a:hover { color: var(--text); }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; border-radius: 999px; font-weight: 700; font-size: 15px;
+  text-decoration: none; border: 1px solid var(--line2); background: rgba(255,255,255,.04); color: var(--text); transition: .2s; white-space: nowrap; }
+.btn:hover { border-color: var(--text3); background: rgba(255,255,255,.08); }
+.btn.gold { background: var(--gold); border-color: var(--gold); color: #141005; }
+.btn.gold:hover { background: var(--gold2); }
+header .btn { padding: 9px 18px; font-size: 14px; }
+.btn svg { width: 18px; height: 18px; flex: none; }
+
+/* Hero */
+.hero { padding: 96px 0 72px; background: radial-gradient(90% 70% at 15% 0%, #1b2a55 0%, rgba(15,23,48,0) 70%); }
+.hero h1 { font-size: clamp(40px, 7vw, 84px); margin-bottom: 22px; }
+.hero h1 em { font-style: normal; color: var(--gold); }
+.hero .lead { font-size: clamp(18px, 2.2vw, 22px); color: var(--text2); max-width: 760px; margin-bottom: 34px; }
+.hero .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero .meta { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 40px; color: var(--text3); font-size: 15px; }
+.hero .meta b { color: var(--text2); font-weight: 600; }
+
+section { padding: 88px 0; }
+section h2 { font-size: clamp(30px, 4.4vw, 48px); margin-bottom: 18px; }
+.section-lead { font-size: 19px; color: var(--text2); max-width: 780px; }
+
+/* Case study */
+.case { background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%); border-top: 1px solid var(--line); }
+.case-head { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: end; margin-bottom: 40px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { padding: 6px 14px; border-radius: 999px; border: 1px solid var(--line2); background: rgba(255,255,255,.04); font-size: 14px; font-weight: 600; color: var(--text2); }
+.video { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line2); box-shadow: 0 30px 80px rgba(0,0,0,.55); background: #000; }
+.video video { width: 100%; aspect-ratio: 16 / 9; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 36px 0 0; }
+.stat { padding: 22px 24px; border-radius: var(--radius); background: var(--panel); border: 1px solid var(--line); }
+.stat b { display: block; font-family: Unbounded; font-size: 34px; color: var(--gold); line-height: 1.1; margin-bottom: 6px; }
+.stat span { color: var(--text2); font-size: 15px; }
+
+.sub { margin-top: 80px; }
+.sub h3 { font-size: 26px; margin-bottom: 14px; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.prose p + p { margin-top: 14px; }
+.prose p { color: var(--text2); }
+.prose b { color: var(--text); }
+.check { list-style: none; display: grid; gap: 10px; }
+.check li { position: relative; padding-left: 30px; color: var(--text2); }
+.check li::before { content: '✓'; position: absolute; left: 0; color: var(--teal); font-weight: 800; }
+.check li b { color: var(--text); }
+
+/* Gallery */
+.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; }
+.shot { margin: 0; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--panel); cursor: zoom-in; transition: transform .2s, border-color .2s; }
+.shot:hover { transform: translateY(-3px); border-color: var(--line2); }
+.shot img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top left; }
+.shot figcaption { padding: 12px 16px; font-size: 14px; color: var(--text2); }
+.shot figcaption b { color: var(--text); font-weight: 700; }
+.phones { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 22px; align-items: center; }
+.phone { border-radius: 28px; overflow: hidden; border: 6px solid #222b4d; box-shadow: 0 20px 50px rgba(0,0,0,.5); }
+.phone img { width: 100%; aspect-ratio: 390 / 844; object-fit: cover; object-position: top; }
+
+/* Engineering */
+.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 28px; }
+.card { padding: 26px 28px; border-radius: var(--radius); background: var(--panel); border: 1px solid var(--line); }
+.card h4 { font-size: 18px; font-weight: 800; margin-bottom: 8px; display: flex; gap: 12px; align-items: baseline; }
+.card h4 i { font-style: normal; font-family: Unbounded; font-size: 13px; color: var(--gold); }
+.card p { color: var(--text2); font-size: 16px; }
+.card code { font-family: 'IBM Plex Mono', monospace; font-size: 13.5px; color: #d9c27a; background: rgba(201,162,39,.08); padding: 1px 6px; border-radius: 5px; }
+
+/* Architecture */
+.arch { margin-top: 28px; padding: 28px; border-radius: var(--radius); background: var(--panel); border: 1px solid var(--line); }
+.arch svg { width: 100%; height: auto; }
+.arch svg text { font-family: Manrope, sans-serif; }
+
+.ai { margin-top: 28px; padding: 28px 30px; border-radius: var(--radius); border: 1px solid rgba(201,162,39,.45);
+  background: linear-gradient(180deg, rgba(201,162,39,.08), rgba(201,162,39,.02)); }
+.ai p { color: var(--text2); }
+.ai p + p { margin-top: 10px; }
+.ai b { color: var(--text); }
+.note { margin-top: 22px; font-size: 15px; color: var(--text3); }
+
+/* About */
+.about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; }
+.timeline { display: grid; gap: 22px; margin-top: 8px; }
+.timeline div { border-left: 2px solid var(--line2); padding-left: 20px; }
+.timeline .when { font-size: 14px; color: var(--text3); }
+.timeline b { display: block; font-size: 17px; }
+.timeline span { color: var(--text2); font-size: 15.5px; }
+.langs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
+.lang { padding: 14px 18px; border-radius: 14px; background: var(--panel); border: 1px solid var(--line); }
+.lang b { display: block; }
+.lang span { color: var(--text3); font-size: 14px; }
+.skills { margin-top: 34px; display: grid; gap: 14px; }
+.skills div b { display: block; margin-bottom: 8px; font-size: 15px; color: var(--text3); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; }
+
+/* Contact */
+.contact { text-align: center; background: radial-gradient(70% 90% at 50% 100%, #1b2a55 0%, rgba(10,17,34,0) 70%); border-top: 1px solid var(--line); }
+.contact h2 { margin-bottom: 14px; }
+.contact .actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 30px; }
+footer { padding: 28px 0 40px; text-align: center; color: var(--text3); font-size: 14px; }
+
+/* Lightbox */
+.lb { position: fixed; inset: 0; z-index: 50; background: rgba(4,7,16,.92); display: none; align-items: center; justify-content: center; padding: 24px; cursor: zoom-out; }
+.lb.on { display: flex; }
+.lb img { max-height: 90vh; border-radius: 12px; box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+
+@media (max-width: 900px) {
+  header nav a:not(.btn) { display: none; }
+  .case-head, .two, .about-grid { grid-template-columns: 1fr; gap: 28px; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .gallery { grid-template-columns: repeat(2, 1fr); }
+  .cards { grid-template-columns: 1fr; }
+  .phones { grid-template-columns: repeat(3, 1fr); }
+  .phones .prose { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 16px; }
+  .hero { padding: 64px 0 48px; }
+  section { padding: 64px 0; }
+  .gallery { grid-template-columns: 1fr; }
+  .phones { gap: 10px; }
+  .phone { border-width: 4px; border-radius: 18px; }
+  .stat b { font-size: 28px; }
+  .langs { grid-template-columns: 1fr; }
+  .arch { padding: 14px; overflow-x: auto; }
+  .arch svg { min-width: 640px; }
+  .hero .actions .btn, .contact .actions .btn { flex: 1 1 100%; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#">Artem <span>Sydorenko</span></a>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#engineering">Engineering</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a class="btn" href="cv/Artem-Sydorenko-CV.pdf" download>CV&nbsp;(PDF)</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker">Full Stack Developer · Gdańsk, Poland</div>
+    <h1>I build web apps<br><em>end to end.</em></h1>
+    <p class="lead">From the PostgreSQL schema and ASP.NET Core API to a React interface that works on a touch terminal and a phone. My main project is <b>HookahPOS</b>, a point-of-sale system for hospitality venues.</p>
+    <div class="actions">
+      <a class="btn gold" href="#work">See the case study</a>
+      <a class="btn" href="cv/Artem-Sydorenko-CV.pdf" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>Download CV</a>
+      <a class="btn" href="https://www.linkedin.com/in/artem-sydorenko-1b6aa12a7" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/photography2610" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="meta">
+      <span><b>Stack:</b> React · TypeScript · C# · ASP.NET Core · PostgreSQL</span>
+      <span><b>Languages:</b> Polish C1 · English B2 · Ukrainian · Russian</span>
+    </div>
+  </div>
+</section>
+
+<section class="case" id="work">
+  <div class="wrap">
+    <div class="case-head">
+      <div>
+        <div class="kicker">Case study</div>
+        <h2>HookahPOS</h2>
+        <p class="section-lead">A complete point-of-sale system for hookah lounges: floor plan, orders, payments, inventory, staff and analytics. It is a commercial product. A new installation starts empty, and the venue owner sets up rooms, menu, stock and staff themselves.</p>
+      </div>
+      <div class="chips">
+        <span class="chip">React 19</span><span class="chip">TypeScript</span><span class="chip">Vite</span>
+        <span class="chip">C# · ASP.NET Core 10</span><span class="chip">Entity Framework Core</span>
+        <span class="chip">PostgreSQL 17</span><span class="chip">JWT</span><span class="chip">PowerShell tests</span><span class="chip">Windows installer</span>
+      </div>
+    </div>
+
+    <div class="video">
+      <video controls preload="metadata" poster="assets/img/poster.jpg" playsinline>
+        <source src="assets/hookahpos-demo.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>~12k</b><span>lines of C# and TypeScript</span></div>
+      <div class="stat"><b>15</b><span>REST API controllers</span></div>
+      <div class="stat"><b>286</b><span>automated API test scenarios</span></div>
+      <div class="stat"><b>3</b><span>UI languages: PL / EN / RU</span></div>
+    </div>
+
+    <div class="sub two">
+      <div class="prose">
+        <h3>The problem</h3>
+        <p>Generic restaurant POS software doesn't fit how a hookah lounge works. It has no concept of <b>hookah masters</b>, tobacco recipes, coal changes, or tables that stay open for hours and get split between friends at the end.</p>
+        <p>Staff work on a <b>1920×1080 touch terminal</b> during a busy evening shift, so every action has to take one or two taps. Managers check the numbers from their phones.</p>
+      </div>
+      <div class="prose">
+        <h3>What I built</h3>
+        <ul class="check">
+          <li><b>Floor plan</b> with a layout editor, live table status and reservations</li>
+          <li><b>Orders</b>: hookah master assignment, comments on a built-in touch keyboard, sending to the bar</li>
+          <li><b>Payments</b>: card and cash, discounts, voids, splitting one bill into several</li>
+          <li><b>Inventory</b>: menu recipes write off stock automatically, with a movement log</li>
+          <li><b>Staff</b> with PIN login, roles, shifts and worked hours</li>
+          <li><b>Analytics</b> by business day, month and year; top items; discounts and voids</li>
+          <li><b>Installer</b>: a self-contained Windows package that runs on a single venue PC</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub">
+      <h3>Inside the app</h3>
+      <p class="muted">Demo data from the Polish version, with the interface in English. Click a screenshot to enlarge it.</p>
+      <div class="gallery">
+        <figure class="shot"><img src="assets/img/02-floor.jpg" alt="Floor plan" loading="lazy"><figcaption><b>Floor plan</b> · table status and reservations</figcaption></figure>
+        <figure class="shot"><img src="assets/img/03-order.jpg" alt="Order screen" loading="lazy"><figcaption><b>Order</b> · menu, bill, hookah master</figcaption></figure>
+        <figure class="shot"><img src="assets/img/05-split.jpg" alt="Split bill" loading="lazy"><figcaption><b>Split bill</b> · move items or a part of a quantity</figcaption></figure>
+        <figure class="shot"><img src="assets/img/06-analytics.jpg" alt="Analytics" loading="lazy"><figcaption><b>Analytics</b> · revenue by business day</figcaption></figure>
+        <figure class="shot"><img src="assets/img/07-stock.jpg" alt="Inventory" loading="lazy"><figcaption><b>Inventory</b> · stock levels and movements</figcaption></figure>
+        <figure class="shot"><img src="assets/img/08-menu.jpg" alt="Menu editor" loading="lazy"><figcaption><b>Menu</b> · items with recipes</figcaption></figure>
+        <figure class="shot"><img src="assets/img/04-payment.jpg" alt="Payment" loading="lazy"><figcaption><b>Payment</b> · card, cash, discount</figcaption></figure>
+        <figure class="shot"><img src="assets/img/09-staff.jpg" alt="Staff" loading="lazy"><figcaption><b>Staff</b> · roles and shifts</figcaption></figure>
+        <figure class="shot"><img src="assets/img/01-login.jpg" alt="PIN login" loading="lazy"><figcaption><b>Start of shift</b> · PIN login</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="sub phones">
+      <div class="prose">
+        <h3>Responsive, down to a phone</h3>
+        <p>The interface is designed for a large touch screen, but the same app adapts to tablets and phones. A manager can check the floor or today's revenue from anywhere in the venue.</p>
+      </div>
+      <div class="phone"><img src="assets/img/m-floor.jpg" alt="Floor plan on a phone" loading="lazy"></div>
+      <div class="phone"><img src="assets/img/m-order.jpg" alt="Order on a phone" loading="lazy"></div>
+      <div class="phone"><img src="assets/img/m-analytics.jpg" alt="Analytics on a phone" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section id="engineering">
+  <div class="wrap">
+    <div class="kicker">Engineering</div>
+    <h2>Decisions that matter</h2>
+    <p class="section-lead">A POS system handles money and stock, so mistakes are expensive. These are the rules the system is built around.</p>
+
+    <div class="cards">
+      <div class="card"><h4><i>01</i>Orders are snapshots</h4>
+        <p>Each order line stores the item's name, price and recipe as they were at the moment of sale (<code>recipe_snapshot</code>). Editing the menu tomorrow never changes a bill that has already been paid.</p></div>
+      <div class="card"><h4><i>02</i>Stock changes in one transaction</h4>
+        <p>Ingredient quantities change only through <code>StockService</code>. The new balance and the movement log entry are written in one database transaction, so stock and its history can't drift apart.</p></div>
+      <div class="card"><h4><i>03</i>Partial actions split the line</h4>
+        <p>A discount, a void or moving "1 of 3 mojitos" to another bill splits the order line first. Every line then has exactly one state, which keeps totals and reports correct.</p></div>
+      <div class="card"><h4><i>04</i>The server owns the money</h4>
+        <p>All totals, discounts and splits are calculated on the server. The React client only displays them, so two terminals can never show different amounts for the same bill.</p></div>
+      <div class="card"><h4><i>05</i>"Today" is a business day</h4>
+        <p>A lounge closes at 2 a.m., so a shift belongs to the day it started (cutoff configurable, 06:00 by default). All times are stored in UTC, and the switch to daylight saving time, when 02:00 doesn't exist, is handled explicitly.</p></div>
+      <div class="card"><h4><i>06</i>Instant session revocation</h4>
+        <p>Staff log in with a PIN and receive a JWT. Every request checks a token version against the database, so changing a role or PIN, or dismissing an employee, logs them out on every device immediately.</p></div>
+      <div class="card"><h4><i>07</i>Nothing is physically deleted</h4>
+        <p>Employees, menu items, tables and rooms are archived, not deleted. Reports for past months stay complete, and schema migrations move existing data instead of dropping it.</p></div>
+      <div class="card"><h4><i>08</i>Translate the system, not the data</h4>
+        <p>The interface and server messages come in Polish, English and Russian, chosen by <code>Accept-Language</code>. The menu stays exactly as the owner typed it, because it is printed on the Polish fiscal receipt.</p></div>
+    </div>
+
+    <div class="sub">
+      <h3>Architecture</h3>
+      <div class="arch">
+        <svg viewBox="0 30 1100 272" role="img" aria-label="Architecture: React client talks to ASP.NET Core API over REST with JWT; API uses EF Core and PostgreSQL; PowerShell test suite runs against a separate test database">
+          <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#8590b8"/></marker></defs>
+          <g fill="#1a2346" stroke="rgba(255,255,255,.18)">
+            <rect x="10" y="40" width="270" height="200" rx="16"/>
+            <rect x="400" y="40" width="330" height="200" rx="16"/>
+            <rect x="850" y="40" width="240" height="200" rx="16"/>
+          </g>
+          <g fill="#eef1f8" font-weight="800" font-size="20">
+            <text x="30" y="80">Client</text><text x="420" y="80">API server</text><text x="870" y="80">Database</text>
+          </g>
+          <g fill="#c9a227" font-weight="700" font-size="15">
+            <text x="30" y="108">React 19 · TypeScript · Vite</text><text x="420" y="108">ASP.NET Core 10 · C#</text><text x="870" y="108">PostgreSQL 17</text>
+          </g>
+          <g fill="#b9c0dc" font-size="15">
+            <text x="30" y="140">Touch terminal 1920×1080</text><text x="30" y="164">Tablet and phone layouts</text><text x="30" y="188">i18n: PL / EN / RU</text><text x="30" y="212">CSS Modules</text>
+            <text x="420" y="140">Controllers → Services</text><text x="420" y="164">OrderService · StockService</text><text x="420" y="188">EF Core + migrations</text><text x="420" y="212">JWT auth · role policies</text>
+            <text x="870" y="140">UTC timestamps</text><text x="870" y="164">Soft delete / archive</text><text x="870" y="188">Stock movement log</text><text x="870" y="212">Order snapshots</text>
+          </g>
+          <g stroke="#8590b8" stroke-width="2" fill="none" marker-end="url(#ar)">
+            <path d="M285 140H395"/><path d="M735 140H845"/>
+          </g>
+          <g fill="#8590b8" font-size="13" font-weight="700" text-anchor="middle">
+            <text x="340" y="128">REST / JSON</text><text x="340" y="160">Bearer JWT</text><text x="790" y="128">EF Core</text>
+          </g>
+          <rect x="400" y="262" width="330" height="34" rx="10" fill="rgba(63,182,139,.12)" stroke="rgba(63,182,139,.5)"/>
+          <text x="565" y="285" fill="#3fb68b" font-size="14" font-weight="700" text-anchor="middle">286 API test scenarios · separate test DB</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="ai">
+      <div class="kicker" style="margin-bottom:10px">How I work</div>
+      <p><b>I build with AI tools.</b> HookahPOS was developed with Claude Code as a pair programmer. I make the product and architecture decisions and set the rules the codebase follows. I review every change and verify it with tests and by running the real app.</p>
+      <p>The AI takes care of the typing. I'm responsible for what gets built, why it's built that way, and whether it actually works.</p>
+    </div>
+    <p class="note">The source code is private because HookahPOS is a commercial product. I'm happy to walk through the code and architecture in an interview.</p>
+  </div>
+</section>
+
+<section id="about" style="border-top:1px solid var(--line)">
+  <div class="wrap about-grid">
+    <div>
+      <div class="kicker">About</div>
+      <h2>Hi, I'm Artem</h2>
+      <p class="section-lead">I'm a full stack developer based in Gdańsk. I trained as an IT technician and started out in frontend, building layouts and interfaces. Now I build complete products, from the database to the UI. I care about software that people use under pressure, like a waiter at 11 p.m. on a Friday.</p>
+      <div class="skills">
+        <div><b>Frontend</b><div class="chips"><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">HTML / CSS</span><span class="chip">Sass</span><span class="chip">Responsive & touch UI</span></div></div>
+        <div><b>Backend</b><div class="chips"><span class="chip">C#</span><span class="chip">ASP.NET Core</span><span class="chip">EF Core</span><span class="chip">REST APIs</span><span class="chip">JWT</span></div></div>
+        <div><b>Data & tools</b><div class="chips"><span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">Git</span><span class="chip">API testing</span><span class="chip">Claude Code</span></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="kicker">Experience & education</div>
+      <div class="timeline">
+        <div><span class="when">2026 — present</span><b>HookahPOS</b><span>Personal commercial project · full stack</span></div>
+        <div><span class="when">05/2024 — 07/2024</span><b>Frontend Junior · EPAM</b><span>Website design and implementation, responsive layouts</span></div>
+        <div><span class="when">10/2025 — present</span><b>WSB Gdańsk</b><span>Bachelor's degree, Management</span></div>
+        <div><span class="when">03/2022 — 06/2025</span><b>ZSE Gdańsk</b><span>IT Technician</span></div>
+      </div>
+      <div class="kicker" style="margin-top:36px">Languages</div>
+      <div class="langs">
+        <div class="lang"><b>Polish</b><span>C1 · Advanced</span></div>
+        <div class="lang"><b>English</b><span>B2 · Upper-intermediate</span></div>
+        <div class="lang"><b>Ukrainian</b><span>C2 · Native</span></div>
+        <div class="lang"><b>Russian</b><span>C2 · Native</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="kicker">Contact</div>
+    <h2>Let's talk</h2>
+    <p class="section-lead" style="margin:0 auto">I'm looking for a full stack or frontend developer role in Tricity or remote.</p>
+    <div class="actions">
+      <a class="btn gold" href="mailto:sidorenkoartem555@gmail.com">sidorenkoartem555@gmail.com</a>
+      <a class="btn" href="tel:+48536037622">+48 536 037 622</a>
+      <a class="btn" href="https://www.linkedin.com/in/artem-sydorenko-1b6aa12a7" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="cv/Artem-Sydorenko-CV.pdf" download>Download CV</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>© 2026 Artem Sydorenko · Gdańsk, Poland</footer>
+
+<div class="lb" id="lb"><img alt=""></div>
+<script>
+  const lb = document.getElementById('lb'), lbImg = lb.querySelector('img');
+  document.querySelectorAll('.shot img').forEach((img) => img.addEventListener('click', () => {
+    lbImg.src = img.src; lbImg.alt = img.alt; lb.classList.add('on');
+  }));
+  lb.addEventListener('click', () => lb.classList.remove('on'));
+  addEventListener('keydown', (e) => { if (e.key === 'Escape') lb.classList.remove('on'); });
+</script>
+</body>
+</html>
